@@ -1,5 +1,6 @@
 from DataParser import dataParser
 from Tweet import Tweet
+from Follower import Follower
 import tweepy
 import time
 
@@ -13,29 +14,27 @@ class SearchAPI:
         ----------
         Parameters :
             - auth : the user's information (API keys)
-            - account : the account we wand to get the followers form (API keys)
+            - account : the account we want to get the followers from (API keys)
         Returns :
-            Return a dictionnary containing as the keys Ids of the followers
-            and as the value a list with the name and the screen name of the user
+            Return a list containing Followers
         """
-        followers = {}
+        followers = []
         api = tweepy.API(auth)
         for page in tweepy.Cursor(api.followers, screen_name=account).pages():
-            followers[page[0].id_str] = [page[0].name, page[0].screen_name]
+            followers.append(Follower(page[0].id_str, page[0].name, page[0].screen_name))
             time.sleep(60)
         return followers
 
     def getTweetsOfUser(self, auth, idUser):
         """
-        Uses the Search API of tweepy to get all the followers from a user defined 
+        Uses the Search API of tweepy to get all the tweets from a user defined 
         as parameter.
         ----------
         Parameters :
             - auth : the user's information (API keys)
-            - account : the account we wand to get the followers form (API keys)
+            - idUser : the id of the user we want to get the tweets from (API keys)
         Returns :
-            Return a dictionnary containing as the keys Ids of the followers
-            and as the value a list with the name and the screen name of the user
+            Return a list containing Tweets
         """
         listTweets = []
         api = tweepy.API(auth)
