@@ -15,6 +15,7 @@ class SearchAPI:
             No return.
         """
         api = tweepy.API(auth)
-        for tweet in tweepy.Cursor(api.user_timeline, id='3237083798', tweet_mode='extended').items():
+        for tweet in tweepy.Cursor(api.user_timeline, id='891475922', tweet_mode='extended').items():
             data = dataParser()
             data.addToDB(tweet._json)
+            print(tweet._json)
