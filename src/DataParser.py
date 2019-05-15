@@ -47,24 +47,21 @@ class dataParser():
         return d
 
 
-    def addToDB(self, tweet):
-        """
-        Redirects to self.addToDB_OT or self.addToDB_HJ, depending on whether it's an Outage, a Hijack, or a Leak.
-        ----------
-        Parameters :
-            - tweet : the tweet to add
-        Returns :
-            No Return
-        """
-        # Separates the text of the tweets to get only the first two letters of this text, which indicates the type of
-        # alert.
-        id_tweet = tweet["id_str"]
-        id_follower = tweet["user"]["id_str"]
-        tweet_date = self.setDateTime(tweet["created_at"])
-        val = (id_tweet, id_follower, tweet_date)
-        sql = "INSERT INTO tweet (id_tweet, id_follower, date) VALUES (%s, %s, %s)"
+    def addFollowerToDB(self, follower):
+        val = (follower.idFollower, follower.name, follower.screen_name)
+        sql = "INSERT INTO tweet (id_follower,name,screen_name) VALUES (%s, %s, %s)"
         try:
             self.mycursor.execute(sql, val)
             self.mydb.commit()
         except:
-            print("couldn't add the tweet number",id_tweet,"(probably already in the database)")
+            print("couldn't add the follower with id ",follower.idFollower," (probably already in the database)")
+
+
+    def addTweetToDB(self, tweet):
+        val = (tweet.idTweet, tweet.idFollower, self.setDateTime(tweet.date))
+        sql = "INSERT INTO tweet (id_tweet,id_follower,date ) VALUES (%s, %s, %s)"
+        try:
+            self.mycursor.execute(sql, val)
+            self.mydb.commit()
+        except:
+            print("couldn't add the tweet with id ",tweet.idTweet," (probably already in the database)")
