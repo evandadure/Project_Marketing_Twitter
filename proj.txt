@@ -1,0 +1,3 @@
+Campagne marketing sur Twitter
+
+Votre client désire connaître quel est le meilleur moment pour joindre sa communauté sur Twitter afin que les campagnes publicitaires aient le plus d'impact. Vous êtes donc mandatés pour lui fournir un dataset contenant l'ensemble de ses followers et quel est le moment le plus propice (jour(s) de la semaine, créneau horaire) pour les joindre. Vous utiliserez pour cela quand le follower a une action sur Twitter (tweeter ou retweeter)
