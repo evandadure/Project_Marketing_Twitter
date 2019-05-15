@@ -1,5 +1,5 @@
 from tweepy import OAuthHandler
-from src.SearchAPI import SearchAPI
+from SearchAPI import SearchAPI
 import json
 
 
@@ -15,4 +15,6 @@ class Main():
 
         # Creates a new SearchAPI object and gets the previous tweets
         searchAPI = SearchAPI()
-        searchAPI.getPreviousTweets(auth)
+#        searchAPI.getAccountsFollowers(auth, "IAmAlanSmithee_")
+        searchAPI.getTweetsOfUser(auth, 371325036)
+#        searchAPI.getPreviousTweets(auth)
