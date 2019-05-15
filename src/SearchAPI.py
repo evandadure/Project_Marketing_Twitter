@@ -1,4 +1,4 @@
-from DataParser import dataParser
+from DataParser import DataParser
 from Tweet import Tweet
 import tweepy
 import time
@@ -55,6 +55,6 @@ class SearchAPI:
         """
         api = tweepy.API(auth)
         for tweet in tweepy.Cursor(api.user_timeline, id='891475922', tweet_mode='extended').items():
-            data = dataParser()
+            data = DataParser()
             data.addToDB(tweet._json)
             print(tweet._json)
