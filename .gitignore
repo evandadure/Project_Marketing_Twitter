@@ -1,3 +1,5 @@
 .idea
 .spyder-py3
+.ipython
+.matplotlib
 __pycache__
