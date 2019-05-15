@@ -49,7 +49,7 @@ class dataParser():
 
     def addFollowerToDB(self, follower):
         val = (follower.idFollower, follower.name, follower.screen_name)
-        sql = "INSERT INTO tweet (id_follower,name,screen_name) VALUES (%s, %s, %s)"
+        sql = "INSERT INTO follower (id_follower,name,screen_name) VALUES (%s, %s, %s)"
         try:
             self.mycursor.execute(sql, val)
             self.mydb.commit()

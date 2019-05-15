@@ -15,6 +15,6 @@ class Main():
 
         # Creates a new SearchAPI object and gets the previous tweets
         searchAPI = SearchAPI()
-#        searchAPI.getAccountsFollowers(auth, "IAmAlanSmithee_")
-        searchAPI.getTweetsOfUser(auth, 371325036)
+        searchAPI.getAccountsFollowers(auth, "mohmoassad")
+#       searchAPI.getTweetsOfUser(auth, "mohmoassad")
 #        searchAPI.getPreviousTweets(auth)

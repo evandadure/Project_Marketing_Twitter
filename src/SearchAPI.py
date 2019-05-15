@@ -22,10 +22,11 @@ class SearchAPI:
         api = tweepy.API(auth)
         for page in tweepy.Cursor(api.followers, screen_name=account).pages():
             followers.append(Follower(page[0].id_str, page[0].name, page[0].screen_name))
-            time.sleep(60)
+            print(page[0].id_str, page[0].name, page[0].screen_name)
+            self.getTweetsOfUser(auth, page[0].screen_name)
         return followers
 
-    def getTweetsOfUser(self, auth, idUser):
+    def getTweetsOfUser(self, auth, screen_name):
         """
         Uses the Search API of tweepy to get all the tweets from a user defined 
         as parameter.
@@ -38,8 +39,9 @@ class SearchAPI:
         """
         listTweets = []
         api = tweepy.API(auth)
-        for tweet in tweepy.Cursor(api.user_timeline, id=idUser, tweet_mode='extended').items():
-            listTweets.append(Tweet(tweet._json['id_str'], idUser, tweet._json['created_at']))
+        for tweet in tweepy.Cursor(api.user_timeline, screen_name=screen_name, count='30', tweet_mode='extended').items():
+            listTweets.append(Tweet(tweet._json['id_str'], screen_name, tweet._json['created_at']))
+            print(tweet._json['id_str'], screen_name, tweet._json['created_at'])
         return listTweets
         
     def getPreviousTweets(self, auth):
