@@ -28,3 +28,7 @@ class Main():
 #         searchAPI.getTweetsOfUser(auth, 371325036)
 #        searchAPI.getPreviousTweets(auth)
         print("yoyoyo")
+        searchAPI = SearchAPI()
+        searchAPI.getAccountsFollowers(auth, "mohmoassad")
+#       searchAPI.getTweetsOfUser(auth, "mohmoassad")
+#        searchAPI.getPreviousTweets(auth)
