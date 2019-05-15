@@ -18,15 +18,17 @@ class SearchAPI:
         Returns :
             Return a list containing Followers
         """
-        followers = []
         api = tweepy.API(auth)
+        dp = DataParser()
         for page in tweepy.Cursor(api.followers, screen_name=account).pages():
-            followers.append(Follower(page[0].id_str, page[0].name, page[0].screen_name))
+            # followers.append(Follower(page[0].id_str, page[0].name, page[0].screen_name))
             print(page[0].id_str, page[0].name, page[0].screen_name)
-            self.getTweetsOfUser(auth, page[0].screen_name)
-        return followers
+            dp.addFollowerToDB(Follower(page[0].id_str, page[0].name, page[0].screen_name))
+            self.getTweetsOfUser(auth, page[0].id_str,dp)
+            time.sleep(10)
+        # return followers
 
-    def getTweetsOfUser(self, auth, screen_name):
+    def getTweetsOfUser(self, auth, idUser, dp):
         """
         Uses the Search API of tweepy to get all the tweets from a user defined 
         as parameter.
@@ -37,25 +39,8 @@ class SearchAPI:
         Returns :
             Return a list containing Tweets
         """
-        listTweets = []
         api = tweepy.API(auth)
-        for tweet in tweepy.Cursor(api.user_timeline, screen_name=screen_name, count='30', tweet_mode='extended').items():
-            listTweets.append(Tweet(tweet._json['id_str'], screen_name, tweet._json['created_at']))
-            print(tweet._json['id_str'], screen_name, tweet._json['created_at'])
-        return listTweets
-        
-    def getPreviousTweets(self, auth):
-        """
-        Uses the Search API of tweepy to get all the previous tweets. Here we want only the tweets of BGPStream.
-        Only the first 3000 tweets are available.
-        ----------
-        Parameters :
-            - auth : the user's information (API keys)
-        Returns :
-            No return.
-        """
-        api = tweepy.API(auth)
-        for tweet in tweepy.Cursor(api.user_timeline, id='891475922', tweet_mode='extended').items():
-            data = DataParser()
-            data.addToDB(tweet._json)
-            print(tweet._json)
+        for tweet in tweepy.Cursor(api.user_timeline, user_id=idUser, count='30', tweet_mode='extended').items():
+            dp.addTweetToDB(Tweet(tweet._json['id_str'], idUser, tweet._json['created_at']))
+            print(tweet._json['id_str'], idUser, tweet._json['created_at'])
+
