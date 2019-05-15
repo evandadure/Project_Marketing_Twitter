@@ -2,4 +2,4 @@
 .spyder-py3
 .ipython
 .matplotlib
-__pycache__
+__pycache__/
