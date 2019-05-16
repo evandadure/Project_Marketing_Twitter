@@ -37,10 +37,24 @@ class Week():
             tweet_day.fillDay(tweet)
 
     def get_days_activity(self, nbFollowers):
+        """
+        Display the percentage of active users on each day of the week
+        ----------
+        Parameters :
+            - nbFollowers(int) : the total number of followers
+        Returns :
+            Nothing (displaying method)
+        """
         daysDict = {}
         for day in self.daysList:
             daysDict[day.day_name] = int((len(day.getFollowersOfTheDay())/nbFollowers)*100)
-        print("")
+        # sort the days by activity rate, by ascending order
+        daysDict = sorted(daysDict.items(), key=lambda x: x[1])
+        # sort the days by activity rate, by descending order
+        daysDict.reverse()
+        print("Percentage of active users on each day of the week :")
+        for day,rate in daysDict:
+            print(day+" : "+str(rate)+"% of users")
 
 
 

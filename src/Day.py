@@ -31,7 +31,6 @@ class Day():
         #Remove the duplicate
         self.timetable[tweet.date.hour//2] = list(dict.fromkeys(self.timetable[tweet.date.hour//2]))
         
-        
     def getFollowersOfTheDay(self):
         """
         Return the number of the followers who had an activity this day
