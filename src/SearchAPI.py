@@ -24,7 +24,6 @@ class SearchAPI:
         """
         api = tweepy.API(auth)
         for page in tweepy.Cursor(api.followers, screen_name=account).pages():
-            # followers.append(Follower(page[0].id_str, page[0].name, page[0].screen_name))
             follower = Follower(page[0].id_str, page[0].name, page[0].screen_name)
             print("ID: " + follower.idFollower + "\nName: " + follower.name + "\nScreen_Name: " + follower.screen_name)
             self.dp.addFollowerToDB(follower)
