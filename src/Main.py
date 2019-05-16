@@ -23,9 +23,11 @@ class Main():
         # searchAPI = SearchAPI()
         # searchAPI.getAccountsFollowers(auth, "mohmoassad")
         dp = DataParser()
+        nbFollowers = len(dp.getAllFollowers())
         allTweets = dp.getAllTweets()
         week = Week()
         week.fill_week(allTweets)
+
         
         print(week.monday.getFollowersOfTheDay())
         
