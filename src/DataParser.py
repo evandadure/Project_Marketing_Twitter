@@ -49,6 +49,14 @@ class DataParser():
 
 
     def addFollowerToDB(self, follower):
+        """
+        Method that adds a follower in parameter into the database (if it isnt already there)
+        ----------
+        Parameters :
+            - follower (Follower) : the follower to add
+        Returns :
+            no return
+        """
         val = (follower.idFollower, follower.name, follower.screen_name)
         query = "INSERT INTO follower (id_follower,name,screen_name) VALUES (%s, %s, %s)"
         try:
@@ -59,6 +67,14 @@ class DataParser():
 
 
     def addTweetToDB(self, tweet):
+        """
+        Method that adds a tweet in parameter into the database (if it isnt already there)
+        ----------
+        Parameters :
+            - tweet (Tweet) : the tweet to add
+        Returns :
+            no return
+        """
         val = (tweet.idTweet, tweet.idFollower, self.setDateTime(tweet.date))
         query = "INSERT INTO tweet (id_tweet,id_follower,date ) VALUES (%s, %s, %s)"
         try:
@@ -68,6 +84,14 @@ class DataParser():
             print("couldn't add the tweet with id ",tweet.idTweet," (probably already in the database)")
 
     def getAllTweets(self):
+        """
+        Get all the tweets of our database
+        ----------
+        Parameters :
+            no parameter
+        Returns :
+            - all_tweets(List<Tweet>) : a list of Tweet objects
+        """
         query = "SELECT * FROM tweet"
         try:
             self.mycursor.execute(query)
