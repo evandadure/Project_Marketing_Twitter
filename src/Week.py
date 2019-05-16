@@ -20,19 +20,7 @@ class Week():
         self.friday = Day("Friday")
         self.saturday = Day("Saturday")
         self.sunday = Day("Sunday")
-
-
-    def get_day_of_the_week(self, dayNumber):
-        """
-        Get the day corresponding to a given number (ex : 0 = monday, 4 = friday...)
-        ----------
-        Parameters :
-            - dayNumber(int) : the number of the day (from 0 to 6)
-        Returns :
-            - an object Day of the current Week
-        """
-        daysList = [self.monday,self.tuesday,self.wednesday,self.thursday,self.friday,self.saturday,self.sunday]
-        return daysList[dayNumber]
+        self.daysList = [self.monday,self.tuesday,self.wednesday,self.thursday,self.friday,self.saturday,self.sunday]
 
     def fill_week(self, list_tweets):
         """
@@ -45,8 +33,17 @@ class Week():
             No return (only fills the objects Day of the current Week
         """
         for tweet in list_tweets:
-            tweet_day = self.get_day_of_the_week(tweet.date.weekday())
+            tweet_day = self.daysList[tweet.date.weekday()]
             tweet_day.fillDay(tweet)
+
+    def get_days_activity(self, nbFollowers):
+        daysDict = {}
+        for day in self.daysList:
+            daysDict[day.day_name] = int((len(day.getFollowersOfTheDay())/nbFollowers)*100)
+        print("")
+
+
+
 
 
 
