@@ -32,15 +32,34 @@ class Day():
         self.timetable[tweet.date.hour//2] = list(dict.fromkeys(self.timetable[tweet.date.hour//2]))
         
     def getFollowersOfTheDay(self):
+        """
+        Return the number of the followers who had an activity this day
+        ----------
+        Parameters :
+            None
+        Returns :
+            List<List<int>> : List of the precentage of the activity of the followers 
+        """
         followers = []
         for hour in self.timetable:
             followers += hour
         return list(dict.fromkeys(followers))
     
     def getActivityOfTheHours(self):
-        followers = []
-        for hour in self.timetable:
-            followers += hour
-        return list(dict.fromkeys(followers))
+        """
+        Return the activity of the followers during a specific day. Each hours are
+        divided by the number of the followers of the day
+        ----------
+        Parameters :
+            None
+        Returns :
+            List<List<int>> : List of the precentage of the activity of the followers 
+        """
+        activity_time = [[],[],[],[],[],[],[],[],[],[],[],[]]
+        print(self.day_name)
+        for index, hour in enumerate(self.timetable):
+            activity_time[index] = int(len(hour) / len(self.getFollowersOfTheDay()) * 100)
+            print("From " + str(index*2) + "h00 to " + str(index*2+1) + "h59 : " + str(activity_time[index]) +"%")
+        return activity_time
 
 
