@@ -31,6 +31,16 @@ class Day():
         #Remove the duplicate
         self.timetable[tweet.date.hour//2] = list(dict.fromkeys(self.timetable[tweet.date.hour//2]))
         
-
+    def getFollowersOfTheDay(self):
+        followers = []
+        for hour in self.timetable:
+            followers += hour
+        return list(dict.fromkeys(followers))
+    
+    def getActivityOfTheHours(self):
+        followers = []
+        for hour in self.timetable:
+            followers += hour
+        return list(dict.fromkeys(followers))
 
 

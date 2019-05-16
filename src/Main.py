@@ -30,3 +30,5 @@ class Main():
         week.get_days_activity(nbFollowers)
 
         
+        print(week.monday.getFollowersOfTheDay())
+        
