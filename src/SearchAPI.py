@@ -22,7 +22,7 @@ class SearchAPI:
         Returns :
             Nothing
         """
-        api = tweepy.API(auth)
+        api = tweepy.API(auth, wait_on_rate_limit=True)
         for page in tweepy.Cursor(api.followers, screen_name=screenName).pages():
             follower = Follower(page[0].id_str, page[0].name, page[0].screen_name)
             print("ID: " + follower.idFollower + "\nName: " + follower.name + "\nScreen_Name: " + follower.screen_name)
@@ -44,7 +44,7 @@ class SearchAPI:
         Returns :
             No return
         """
-        api = tweepy.API(auth)
+        api = tweepy.API(auth, wait_on_rate_limit=True)
         for tweet in tweepy.Cursor(api.user_timeline, user_id=idUser, count='30', tweet_mode='extended').items():
             tweet = Tweet(tweet._json['id_str'], idUser, tweet._json['created_at'])
             print("ID : " + tweet.idTweet + "\nIDFollower: " + tweet.idFollower + "\nDate: " + tweet.date)

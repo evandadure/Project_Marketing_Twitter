@@ -21,7 +21,7 @@ class Main():
         # Creates a new SearchAPI object and gets the previous tweets
 
         # searchAPI = SearchAPI()
-        # searchAPI.getAccountsFollowers(auth, "mohmoassad")
+        # searchAPI.getAccountsFollowers(auth, "KMbappe")
         dp = DataParser()
         nbFollowers = len(dp.getAllFollowers())
         allTweets = dp.getAllTweets()
