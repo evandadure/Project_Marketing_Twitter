@@ -29,6 +29,5 @@ class Main():
         week.fill_week(allTweets)
         week.get_days_activity(nbFollowers)
 
-        
-        print(week.monday.getFollowersOfTheDay())
+
         
