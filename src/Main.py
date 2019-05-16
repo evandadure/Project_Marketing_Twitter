@@ -29,5 +29,4 @@ class Main():
         week.fill_week(allTweets)
 
         
-        print(week.monday.getFollowersOfTheDay())
         
