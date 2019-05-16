@@ -1,3 +1,5 @@
+from Tweet import Tweet
+
 class Day():
 
     def __init__(self, day_name):
@@ -6,6 +8,19 @@ class Day():
         self.timetable = [[],[],[],[],[],[],[],[],[],[],[],[]]
 
     def fillDay(self, tweet):
-        return 0
+        """
+        Add the idfollower of the tweet into the correct timetable depending on
+        the hour the tweet was posted. When added, remove duplicate, so those who
+        post huge amount of tweets in a short time won't have too much influence.
+        ----------
+        Parameters :
+            - tweet : The tweet we will work. We'll insert its idFollower into 
+            the correct timetable
+        Returns :
+            Nothing
+        """
+        self.timetable[tweet.date.hour//2].append(tweet.idFollower)
+        #Remove the duplicate
+        self.timetable[tweet.date.hour//2] = list(dict.fromkeys(self.timetable[tweet.date.hour//2]))
 
 

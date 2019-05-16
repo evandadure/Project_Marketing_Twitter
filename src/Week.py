@@ -1,6 +1,6 @@
 from Day import Day
 
-class TweetsList():
+class Week():
 
     def __init__(self):
         self.monday = Day("Monday")
