@@ -1,5 +1,6 @@
 from datetime import datetime
 from datetime import timedelta
+from Tweet import Tweet
 import mysql.connector
 
 
@@ -49,9 +50,9 @@ class DataParser():
 
     def addFollowerToDB(self, follower):
         val = (follower.idFollower, follower.name, follower.screen_name)
-        sql = "INSERT INTO follower (id_follower,name,screen_name) VALUES (%s, %s, %s)"
+        query = "INSERT INTO follower (id_follower,name,screen_name) VALUES (%s, %s, %s)"
         try:
-            self.mycursor.execute(sql, val)
+            self.mycursor.execute(query, val)
             self.mydb.commit()
         except:
             print("couldn't add the follower with id ",follower.idFollower," (probably already in the database)")
@@ -59,9 +60,23 @@ class DataParser():
 
     def addTweetToDB(self, tweet):
         val = (tweet.idTweet, tweet.idFollower, self.setDateTime(tweet.date))
-        sql = "INSERT INTO tweet (id_tweet,id_follower,date ) VALUES (%s, %s, %s)"
+        query = "INSERT INTO tweet (id_tweet,id_follower,date ) VALUES (%s, %s, %s)"
         try:
-            self.mycursor.execute(sql, val)
+            self.mycursor.execute(query, val)
             self.mydb.commit()
         except:
             print("couldn't add the tweet with id ",tweet.idTweet," (probably already in the database)")
+
+    def getAllTweets(self):
+        query = "SELECT * FROM tweet"
+        try:
+            self.mycursor.execute(query)
+            all_tweets=[]
+            result = self.mycursor.fetchall()
+            for tweet in result:
+                tweet = Tweet(tweet[0], tweet[1], tweet[2])
+                all_tweets.append(tweet)
+            return all_tweets
+        except:
+            print("a problem occured while trying to get all tweets")
+

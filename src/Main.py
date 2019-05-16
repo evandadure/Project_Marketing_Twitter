@@ -17,7 +17,7 @@ class Main():
 
 
         # Creates a new SearchAPI object and gets the previous tweets
-        # dp = DataParser()
+        dp = DataParser()
         # fol = Follower("849848","Evan Dadure","evandadure")
         # tw1 = Tweet("48941891", "849848", "Fri May 10 17:59:07 +0000 2019")
         # tw2 = Tweet("489451218", "849848", "Tue May 09 11:12:41 +0000 2019")
@@ -28,7 +28,8 @@ class Main():
 #         searchAPI.getTweetsOfUser(auth, 371325036)
 #        searchAPI.getPreviousTweets(auth)
 #         print("yoyoyo")
-        searchAPI = SearchAPI()
-        searchAPI.getAccountsFollowers(auth, "mohmoassad")
+#         searchAPI = SearchAPI()
+        # searchAPI.getAccountsFollowers(auth, "mohmoassad")
+        dp.getAllTweets()
 #       searchAPI.getTweetsOfUser(auth, "mohmoassad")
 #        searchAPI.getPreviousTweets(auth)
