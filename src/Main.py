@@ -4,6 +4,7 @@ from DataParser import DataParser
 from Follower import Follower
 from Tweet import Tweet
 from Week import Week
+import datetime
 import json
 
 
@@ -18,11 +19,14 @@ class Main():
 
     
         # Creates a new SearchAPI object and gets the previous tweets
-        searchAPI = SearchAPI()
+
+        # searchAPI = SearchAPI()
         # searchAPI.getAccountsFollowers(auth, "mohmoassad")
         dp = DataParser()
         allTweets = dp.getAllTweets()
         week = Week()
         week.fill_week(allTweets)
-
+        
+    
+        
 

@@ -17,14 +17,13 @@ class SearchAPI:
         as parameter, and insert it into the database.
         ----------
         Parameters :
-            - auth : the user's information (API keys)
-            - screenName : the screen name of the account we want to get the followers from
+            - auth(OAuthHandler) : the user's information (API keys)
+            - screenName(str) : the screen name of the account we want to get the followers from
         Returns :
             Nothing
         """
         api = tweepy.API(auth)
         for page in tweepy.Cursor(api.followers, screen_name=screenName).pages():
-            # followers.append(Follower(page[0].id_str, page[0].name, page[0].screen_name))
             follower = Follower(page[0].id_str, page[0].name, page[0].screen_name)
             print("ID: " + follower.idFollower + "\nName: " + follower.name + "\nScreen_Name: " + follower.screen_name)
             # adds the current follower in the db
@@ -40,8 +39,8 @@ class SearchAPI:
         as parameter, and insert them into the database.
         ----------
         Parameters :
-            - auth : the user's information (API keys)
-            - idUser : the id of the user we want to get the tweets from
+            - auth(OAuthHandler) : the user's information (API keys)
+            - idUser(str) : the id of the user we want to get the tweets from
         Returns :
             No return
         """
