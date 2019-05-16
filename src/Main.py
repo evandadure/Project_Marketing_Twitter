@@ -23,10 +23,3 @@ class Main():
 #        searchAPI.getAccountsFollowers(auth, "mohmoassad")
         
         
-        tweet1 = Tweet("015244784715245", "0123456789", datetime.datetime.today())
-        tweet2 = Tweet("12168431484", "01234565789", datetime.datetime.today())
-        week = Week()
-        week.monday.fillDay(tweet1)
-        week.monday.fillDay(tweet2)
-        
-
