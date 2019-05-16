@@ -2,7 +2,7 @@ class Tweet:
     
     def __init__(self, idTweet, idFollower, date):
         """
-        Initializes the dataParser by connecting to the database.
+        Create a Tweet object
         ----------
         Parameters :
             - idTweet(str) : The tweet's id

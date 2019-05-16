@@ -17,8 +17,8 @@ class SearchAPI:
         as parameter, and insert it into the database.
         ----------
         Parameters :
-            - auth : the user's information (API keys)
-            - screenName : the screen name of the account we want to get the followers from
+            - auth(OAuthHandler) : the user's information (API keys)
+            - screenName(str) : the screen name of the account we want to get the followers from
         Returns :
             Nothing
         """
@@ -39,8 +39,8 @@ class SearchAPI:
         as parameter, and insert them into the database.
         ----------
         Parameters :
-            - auth : the user's information (API keys)
-            - idUser : the id of the user we want to get the tweets from
+            - auth(OAuthHandler) : the user's information (API keys)
+            - idUser(str) : the id of the user we want to get the tweets from
         Returns :
             No return
         """

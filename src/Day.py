@@ -3,6 +3,14 @@ from Tweet import Tweet
 class Day():
 
     def __init__(self, day_name):
+        """
+        Create a Day object
+        ----------
+        Parameters :
+            - day_name(str) : The name of the day(monday, tuesday...)
+        Returns :
+            No return.
+        """
         self.day_name = day_name
         # a timetable is composed of 12 lists representing the 12 timestamps "00-02", "02-04"..."22-00"
         self.timetable = [[],[],[],[],[],[],[],[],[],[],[],[]]
@@ -14,7 +22,7 @@ class Day():
         post huge amount of tweets in a short time won't have too much influence.
         ----------
         Parameters :
-            - tweet : The tweet we will work. We'll insert its idFollower into 
+            - tweet(Tweet) : The tweet we will work. We'll insert its idFollower into 
             the correct timetable
         Returns :
             Nothing
