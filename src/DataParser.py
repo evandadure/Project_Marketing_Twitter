@@ -19,7 +19,7 @@ class DataParser():
 #     port = "3306",
 #     user = "root",
 #     passwd = "root",
-#     database = "bgpstreamdb"
+#     database = "marketing_db"
 # =============================================================================
     
     
@@ -34,11 +34,11 @@ class DataParser():
             No return.
         """
         self.mydb = mysql.connector.connect(
-            host="tp-epu.univ-savoie.fr",
-            port="3308",
-            user="personma",
-            passwd="rca8v7gd",
-            database="personma"
+            host = "localhost",
+            port = "3306",
+            user = "root",
+            passwd = "root",
+            database = "marketing_db"
         )
         self.mycursor = self.mydb.cursor()
 
