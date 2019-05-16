@@ -31,7 +31,6 @@ class Day():
         #Remove the duplicate
         self.timetable[tweet.date.hour//2] = list(dict.fromkeys(self.timetable[tweet.date.hour//2]))
         
-        
-    def 
+
 
 

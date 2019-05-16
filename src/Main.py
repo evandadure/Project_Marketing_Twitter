@@ -27,5 +27,6 @@ class Main():
         allTweets = dp.getAllTweets()
         week = Week()
         week.fill_week(allTweets)
+        week.get_days_activity(nbFollowers)
 
         
