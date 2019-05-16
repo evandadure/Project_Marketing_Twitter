@@ -1,5 +1,6 @@
 from datetime import datetime
 from datetime import timedelta
+from Tweet import Tweet
 import mysql.connector
 
 
@@ -66,20 +67,58 @@ class DataParser():
 
 
     def addFollowerToDB(self, follower):
+        """
+        Method that adds a follower in parameter into the database (if it isnt already there)
+        ----------
+        Parameters :
+            - follower (Follower) : the follower to add
+        Returns :
+            no return
+        """
         val = (follower.idFollower, follower.name, follower.screen_name)
-        sql = "INSERT INTO follower (id_follower,name,screen_name) VALUES (%s, %s, %s)"
+        query = "INSERT INTO follower (id_follower,name,screen_name) VALUES (%s, %s, %s)"
         try:
-            self.mycursor.execute(sql, val)
+            self.mycursor.execute(query, val)
             self.mydb.commit()
         except:
             print("couldn't add the follower with id ",follower.idFollower," (probably already in the database)")
 
 
     def addTweetToDB(self, tweet):
+        """
+        Method that adds a tweet in parameter into the database (if it isnt already there)
+        ----------
+        Parameters :
+            - tweet (Tweet) : the tweet to add
+        Returns :
+            no return
+        """
         val = (tweet.idTweet, tweet.idFollower, self.setDateTime(tweet.date))
-        sql = "INSERT INTO tweet (id_tweet,id_follower,date ) VALUES (%s, %s, %s)"
+        query = "INSERT INTO tweet (id_tweet,id_follower,date ) VALUES (%s, %s, %s)"
         try:
-            self.mycursor.execute(sql, val)
+            self.mycursor.execute(query, val)
             self.mydb.commit()
         except:
             print("couldn't add the tweet with id ",tweet.idTweet," (probably already in the database)")
+
+    def getAllTweets(self):
+        """
+        Get all the tweets of our database
+        ----------
+        Parameters :
+            no parameter
+        Returns :
+            - all_tweets(List<Tweet>) : a list of Tweet objects
+        """
+        query = "SELECT * FROM tweet"
+        try:
+            self.mycursor.execute(query)
+            all_tweets=[]
+            result = self.mycursor.fetchall()
+            for tweet in result:
+                tweet = Tweet(tweet[0], tweet[1], tweet[2])
+                all_tweets.append(tweet)
+            return all_tweets
+        except:
+            print("a problem occured while trying to get all tweets")
+

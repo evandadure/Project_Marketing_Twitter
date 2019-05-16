@@ -4,10 +4,12 @@ class Follower:
     
     def __init__(self, idFollower, name, screen_name):
         """
-        Initializes the dataParser by connecting to the database.
+        Initializes the follower by specifying an id, a name and a screen name.
         ----------
         Parameters :
-            No parameter.
+            - idFollower(str) : the id of the follower
+            - name(str) : the name of the follower
+            - screen_name(str) : the screen name of the follower
         Returns :
             No return.
         """
