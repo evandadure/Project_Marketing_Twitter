@@ -15,7 +15,7 @@ class Main():
         auth = OAuthHandler(data['consumer_key'], data['consumer_secret'])
         auth.set_access_token(data['access_token'], data['access_token_secret'])
 
-
+    
         # Creates a new SearchAPI object and gets the previous tweets
         # dp = DataParser()
         # fol = Follower("849848","Evan Dadure","evandadure")
@@ -25,10 +25,7 @@ class Main():
         # dp.addTweetToDB(tw1)
         # dp.addTweetToDB(tw2)
 #        searchAPI.getAccountsFollowers(auth, "IAmAlanSmithee_")
-#         searchAPI.getTweetsOfUser(auth, 371325036)
+#        searchAPI.getTweetsOfUser(auth, 371325036)
 #        searchAPI.getPreviousTweets(auth)
-#         print("yoyoyo")
         searchAPI = SearchAPI()
         searchAPI.getAccountsFollowers(auth, "mohmoassad")
-#       searchAPI.getTweetsOfUser(auth, "mohmoassad")
-#        searchAPI.getPreviousTweets(auth)

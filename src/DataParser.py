@@ -5,6 +5,24 @@ import mysql.connector
 
 class DataParser():
 
+# =============================================================================
+#     host="tp-epu.univ-savoie.fr",
+#     port="3308",
+#     user="personma",
+#     passwd="rca8v7gd",
+#     database="personma"
+# =============================================================================
+
+# =============================================================================
+#     host = "localhost",
+#     port = "3306",
+#     user = "root",
+#     passwd = "root",
+#     database = "bgpstreamdb"
+# =============================================================================
+    
+    
+    
     def __init__(self):
         """
         Initializes the dataParser by connecting to the database.
@@ -15,11 +33,11 @@ class DataParser():
             No return.
         """
         self.mydb = mysql.connector.connect(
-                host = "localhost",
-                port = "3306",
-                user = "root",
-                passwd = "root",
-                database = "marketing_db"
+            host="tp-epu.univ-savoie.fr",
+            port="3308",
+            user="personma",
+            passwd="rca8v7gd",
+            database="personma"
         )
         self.mycursor = self.mydb.cursor()
 
