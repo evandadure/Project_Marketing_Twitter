@@ -56,8 +56,10 @@ class Day():
             List<List<int>> : List of the precentage of the activity of the followers 
         """
         activity_time = [[],[],[],[],[],[],[],[],[],[],[],[]]
+        print(self.day_name)
         for index, hour in enumerate(self.timetable):
             activity_time[index] = int(len(hour) / len(self.getFollowersOfTheDay()) * 100)
+            print("From " + str(index*2) + "h00 to " + str(index*2+1) + "h59 : " + str(activity_time[index]) +"%")
         return activity_time
 
 
