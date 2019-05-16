@@ -29,6 +29,3 @@ class Main():
         week.fill_week(allTweets)
 
         
-    
-        
-

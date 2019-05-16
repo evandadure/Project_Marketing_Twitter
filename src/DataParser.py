@@ -1,6 +1,7 @@
 from datetime import datetime
 from datetime import timedelta
 from Tweet import Tweet
+from Follower import Follower
 import mysql.connector
 
 
@@ -121,4 +122,24 @@ class DataParser():
             return all_tweets
         except:
             print("a problem occured while trying to get all tweets")
-
+            
+    def getAllFollowers(self):
+        """
+        Get all the followers of our database
+        ----------
+        Parameters :
+            no parameter
+        Returns :
+            - all_followers(List<Follower>) : a list of Follower objects
+        """
+        query = "SELECT * FROM follower"
+        try:
+            self.mycursor.execute(query)
+            all_followers=[]
+            result = self.mycursor.fetchall()
+            for follower in result:
+                follower = Follower(follower[0], follower[1], follower[2])
+                all_followers.append(follower)
+            return all_followers
+        except:
+            print("a problem occured while trying to get all followers")
